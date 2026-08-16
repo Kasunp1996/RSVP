@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thewuni & Kasun — 14 December 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@500;600&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F5EEE1;
+    --ivory-deep:#EEE4D0;
+    --ink:#23201B;
+    --gold:#AC8347;
+    --gold-soft:#CBAD79;
+    --emerald:#1E3D33;
+    --emerald-deep:#132822;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .eyebrow{
+    font-family:'Cormorant SC', serif;
+    letter-spacing:0.35em;
+    font-size:0.72rem;
+    color:var(--emerald);
+    text-transform:uppercase;
+  }
+
+  /* ---------- texture ---------- */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:5;
+    opacity:0.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- hero (save-the-date card) ---------- */
+  .hero-wrap{
+    min-height:100svh;
+    display:flex; align-items:center; justify-content:center;
+    padding:5vh 4vw 6vh; position:relative;
+  }
+  .frame{
+    position:relative;
+    width:100%; max-width:600px;
+    border:1px solid var(--gold);
+    padding:2px;
+    opacity:0; animation:riseIn 1.1s 0.15s ease forwards;
+  }
+  .frame::before{
+    content:""; position:absolute; inset:9px; border:1px solid var(--gold);
+    pointer-events:none;
+  }
+  .hero{
+    text-align:center;
+    padding:7vh 6vw 4vh;
+    position:relative;
+    overflow:hidden;
+  }
+  .std-eyebrow-top{
+    opacity:0; animation:riseIn 1s 0.5s ease forwards;
+  }
+  .std-title{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 8vw, 3.6rem);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--emerald);
+    line-height:1.05;
+    opacity:0; animation:riseIn 1.1s 0.75s ease forwards;
+  }
+  .std-title .word{ display:block; }
+  .std-the-row{
+    display:flex; align-items:center; justify-content:center; gap:0.8rem;
+    margin:0.12em 0;
+  }
+  .std-the-row .rule{ width:50px; height:1px; background:var(--gold-soft); }
+  .std-the{
+    font-family:'Petit Formal Script', cursive;
+    font-size:0.5em;
+    color:var(--gold);
+    letter-spacing:0;
+    text-transform:none;
+  }
+  .for-wedding{
+    font-family:'Cormorant SC', serif; letter-spacing:0.3em; font-size:0.68rem;
+    color:var(--gold); margin:0.9rem 0 0.6rem;
+    opacity:0; animation:riseIn 1s 1s ease forwards;
+  }
+  .script-names{
+    font-family:'Petit Formal Script', cursive;
+    font-size:clamp(2.4rem, 8vw, 3.6rem);
+    color:var(--emerald);
+    line-height:1.15;
+    opacity:0; animation:riseIn 1.1s 1.15s ease forwards;
+  }
+  .amp{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:0.34em;
+    color:var(--gold);
+    margin:0.1em 0;
+  }
+
+  .knot{ margin:1.3rem auto 1.5rem; opacity:0; animation:riseIn 1s 1.4s ease forwards; }
+  .knot svg{ display:block; margin:0 auto; }
+
+  .date-row{
+    display:flex; align-items:center; justify-content:center; gap:0.9rem;
+    font-family:'Cormorant SC', serif; letter-spacing:0.2em; font-size:0.85rem;
+    color:var(--ink); opacity:0; animation:riseIn 1s 1.55s ease forwards;
+  }
+  .date-row .divider-bit{ width:22px; height:1px; background:var(--gold-soft); }
+  .date-row .day-num{
+    font-family:'Playfair Display', serif; font-weight:600; font-size:1.9rem;
+    color:var(--emerald); letter-spacing:0;
+  }
+  .year-row{
+    font-family:'Cormorant Garamond', serif; font-size:1.05rem; letter-spacing:0.12em;
+    color:var(--ink); margin-top:0.35rem;
+    opacity:0; animation:riseIn 1s 1.65s ease forwards;
+  }
+  .time-row{
+    font-family:'Cormorant SC', serif; letter-spacing:0.2em; font-size:0.78rem;
+    color:var(--gold); margin-top:0.7rem;
+    opacity:0; animation:riseIn 1s 1.75s ease forwards;
+  }
+  .std-rule{
+    width:90px; height:1px; background:var(--gold-soft); margin:1rem auto;
+    opacity:0; animation:riseIn 1s 1.85s ease forwards;
+  }
+  .location-row{
+    font-family:'Cormorant SC', serif; letter-spacing:0.22em; font-size:0.82rem;
+    color:var(--ink); display:flex; align-items:center; justify-content:center; gap:0.5rem;
+    opacity:0; animation:riseIn 1s 1.95s ease forwards;
+  }
+  .sl-icon{ width:14px; height:14px; }
+
+  .skyline{
+    display:block; width:100%; height:auto; margin-top:2.4rem;
+    opacity:0; animation:riseIn 1.3s 2.1s ease forwards;
+  }
+
+  .countdown{
+    margin-top:2rem;
+    display:flex; gap:clamp(1rem,4vw,2.4rem); justify-content:center;
+    opacity:0; animation:riseIn 1s 2.4s ease forwards;
+  }
+  .countdown div{ text-align:center; }
+  .countdown .num{
+    font-family:'Cormorant Garamond', serif; font-weight:500;
+    font-size:clamp(1.4rem,4vw,1.9rem); color:var(--emerald);
+    font-variant-numeric:tabular-nums;
+  }
+  .countdown .lbl{
+    font-family:'Cormorant SC', serif; font-size:0.6rem; letter-spacing:0.22em;
+    color:#8a8172; display:block; margin-top:0.2rem;
+  }
+
+  .seal{
+    width:104px; height:104px; border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    margin:0.5rem auto 1.6rem;
+  }
+  .seal::before{
+    content:""; position:absolute; inset:8px; border-radius:50%;
+    border:1px solid var(--gold-soft);
+  }
+  .seal-initials{
+    font-family:'Cormorant SC', serif; font-size:1.55rem; letter-spacing:0.08em;
+    color:var(--emerald);
+  }
+
+  .tagline{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(1rem, 2vw, 1.15rem);
+    color:#5a5347;
+    max-width:32em;
+    margin:0 auto;
+  }
+
+  @keyframes riseIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- divider ---------- */
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:1rem;
+    padding:0 6vw; max-width:520px; margin:0 auto;
+  }
+  .divider .line{ flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+  .divider .mark{ color:var(--gold); font-size:0.9rem; }
+
+  /* ---------- section shell ---------- */
+  section{ padding:9vh 6vw; }
+  .section-inner{ max-width:640px; margin:0 auto; text-align:center; }
+  .section-title{
+    font-family:'Playfair Display', serif; font-weight:600;
+    letter-spacing:0.04em;
+    font-size:clamp(1.8rem, 4vw, 2.5rem);
+    margin:0.6rem 0 1.4rem;
+  }
+
+  /* ---------- details ---------- */
+  .details{ background:var(--ivory); }
+  .section-title{ color:var(--emerald); }
+
+  .detail-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:2.6rem;
+    margin-top:2.4rem; text-align:left;
+    border:1px solid var(--gold-soft); padding:2.2rem 2rem;
+  }
+  @media (max-width:560px){ .detail-grid{ grid-template-columns:1fr; gap:2rem; padding:1.8rem 1.4rem; } }
+  .detail-card .k{
+    font-family:'Cormorant SC', serif; letter-spacing:0.22em; font-size:0.68rem;
+    color:var(--gold); display:block; margin-bottom:0.5rem;
+  }
+  .detail-card .v{
+    font-family:'Playfair Display', serif; font-weight:600; font-size:1.2rem; line-height:1.4;
+    color:var(--emerald);
+  }
+  .detail-card .sub{ font-family:'Jost',sans-serif; font-size:0.86rem; color:#7a715f; margin-top:0.3rem; font-weight:300; }
+
+  .map-link{
+    display:inline-block; margin-top:2.2rem;
+    font-family:'Cormorant SC', serif; letter-spacing:0.18em; font-size:0.72rem;
+    color:var(--emerald); text-decoration:none; border-bottom:1px solid var(--gold);
+    padding-bottom:4px; transition:opacity 0.25s ease;
+  }
+  .map-link:hover{ opacity:0.6; }
+
+  /* ---------- rsvp ---------- */
+  .rsvp{ background:var(--ivory-deep); }
+  .rsvp-note{
+    font-family:'Cormorant Garamond', serif; font-style:italic; color:#5a5347;
+    font-size:1.05rem; margin-bottom:2.2rem;
+  }
+  .rsvp-note b{ color:var(--emerald); font-style:normal; }
+
+  form{ text-align:left; max-width:520px; margin:0 auto; }
+  .field{ margin-bottom:1.5rem; }
+  .field label{
+    display:block; font-family:'Cormorant SC', serif; letter-spacing:0.16em;
+    font-size:0.7rem; color:var(--emerald); margin-bottom:0.5rem;
+  }
+  .field input[type="text"], .field textarea, .field select{
+    width:100%; border:none; border-bottom:1px solid #c9bfa8;
+    background:transparent; padding:0.6rem 0.1rem; font-family:'Jost', sans-serif;
+    font-size:1rem; color:var(--ink); outline:none; transition:border-color 0.25s ease;
+  }
+  .field input[type="text"]:focus, .field textarea:focus, .field select:focus{
+    border-color:var(--emerald);
+  }
+  .field textarea{ resize:vertical; min-height:70px; }
+
+  .attend-toggle{ display:flex; gap:0.8rem; flex-wrap:wrap; }
+  .attend-toggle input{ position:absolute; opacity:0; pointer-events:none; }
+  .attend-toggle label{
+    flex:1; min-width:140px; text-align:center;
+    font-family:'Cormorant SC', serif; letter-spacing:0.1em; font-size:0.8rem;
+    padding:0.85rem 0.6rem; border:1px solid #c9bfa8; cursor:pointer;
+    color:var(--ink); transition:all 0.25s ease; margin:0;
+  }
+  .attend-toggle input:checked + label{
+    background:var(--emerald); border-color:var(--emerald); color:var(--ivory);
+  }
+  .attend-toggle label:focus-within{ outline:2px solid var(--gold); outline-offset:2px; }
+
+  .guest-row{ display:none; }
+  .guest-row.show{ display:block; }
+
+  .submit-wrap{ text-align:center; margin-top:2.6rem; }
+  .seal-btn{
+    appearance:none; border:1px solid var(--emerald); background:transparent;
+    color:var(--emerald); font-family:'Cormorant SC', serif; letter-spacing:0.24em;
+    font-size:0.8rem; padding:1rem 2.6rem; cursor:pointer;
+    border-radius:999px; transition:all 0.3s ease;
+  }
+  .seal-btn:hover{ background:var(--emerald); color:var(--ivory); }
+  .seal-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .seal-btn:disabled{ opacity:0.5; cursor:wait; }
+
+  .error-msg{ color:#8a3b2c; font-size:0.82rem; margin-top:0.5rem; font-family:'Jost',sans-serif; display:none; }
+  .error-msg.show{ display:block; }
+
+  /* confirmation state */
+  .confirm{
+    display:none; text-align:center; padding:2.5rem 1rem;
+  }
+  .confirm.show{ display:block; animation:riseIn 0.6s ease forwards; }
+  .confirm .seal{ margin-bottom:1.4rem; animation:none; opacity:1; }
+  .confirm h3{ font-family:'Cormorant Garamond', serif; font-size:1.7rem; font-weight:500; margin-bottom:0.6rem; }
+  .confirm p{ color:#5a5347; font-size:0.95rem; max-width:28em; margin:0 auto; }
+
+  form.hide{ display:none; }
+
+  /* ---------- footer / admin ---------- */
+  footer{
+    text-align:center; padding:5vh 6vw 4vh; color:#9b917f; font-size:0.8rem;
+  }
+  .admin-toggle{
+    background:none; border:none; color:#b3a98f; font-family:'Jost',sans-serif;
+    font-size:0.72rem; letter-spacing:0.05em; cursor:pointer; text-decoration:underline;
+    margin-top:0.6rem;
+  }
+  .admin-panel{ display:none; max-width:640px; margin:2rem auto 0; text-align:left; }
+  .admin-panel.show{ display:block; }
+  .admin-panel table{ width:100%; border-collapse:collapse; font-size:0.82rem; margin-top:1rem; }
+  .admin-panel th, .admin-panel td{ text-align:left; padding:0.5rem 0.6rem; border-bottom:1px solid #e2d9c4; vertical-align:top; }
+  .admin-panel th{ font-family:'Cormorant SC', serif; letter-spacing:0.08em; color:var(--emerald); font-weight:500; }
+  .admin-summary{ display:flex; gap:1.6rem; margin-top:0.8rem; flex-wrap:wrap; }
+  .admin-summary div{ font-family:'Cormorant Garamond', serif; font-size:1.1rem; color:var(--emerald); }
+  .admin-summary span{ display:block; font-family:'Jost',sans-serif; font-size:0.68rem; letter-spacing:0.08em; color:#9b917f; }
+  .admin-refresh{ font-size:0.75rem; color:#b3a98f; background:none; border:1px solid #d8cdb0; padding:0.35rem 0.9rem; border-radius:999px; cursor:pointer; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- HERO -->
+<div class="hero-wrap">
+<div class="frame">
+<section class="hero">
+  <h1 class="std-title">
+    <span class="word">Save</span>
+    <span class="std-the-row"><span class="rule"></span><span class="std-the">the</span><span class="rule"></span></span>
+    <span class="word">Date</span>
+  </h1>
+  <p class="for-wedding">For the wedding of</p>
+  <p class="script-names">Thewuni<span class="amp">&amp;</span>Kasun</p>
+
+  <div class="knot" aria-hidden="true">
+    <svg width="90" height="20" viewBox="0 0 90 20" fill="none">
+      <path d="M2 10 H30" stroke="#CBAD79" stroke-width="1"/>
+      <path d="M60 10 H88" stroke="#CBAD79" stroke-width="1"/>
+      <path d="M32 10c3-6 9-6 13 0-4 6-10 6-13 0z" stroke="#AC8347" stroke-width="1.1"/>
+      <path d="M58 10c-3-6-9-6-13 0 4 6 10 6 13 0z" stroke="#AC8347" stroke-width="1.1"/>
+      <circle cx="45" cy="10" r="1.4" fill="#AC8347"/>
+    </svg>
+  </div>
+
+  <div class="date-row">
+    <span>Monday</span><span class="divider-bit"></span>
+    <span class="day-num">14</span>
+    <span class="divider-bit"></span><span>December</span>
+  </div>
+  <p class="year-row">2026</p>
+  <p class="time-row">6:00 PM onwards</p>
+  <div class="std-rule"></div>
+  <p class="location-row">
+    <svg class="sl-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2c3 2 6 5 6 10 0 5-3 8-6 10-3-2-6-5-6-10 0-5 3-8 6-10z" fill="#AC8347"/>
+      <path d="M17 6c1.5 0.3 2.4 1 2.6 2-0.9 0.4-1.9 0.1-2.6-2z" fill="#AC8347"/>
+    </svg>
+    Colombo, Sri Lanka
+  </p>
+
+  <svg class="skyline" viewBox="0 0 800 160" preserveAspectRatio="none" aria-hidden="true">
+    <g stroke="#AC8347" stroke-width="1" fill="none" opacity="0.55">
+      <path d="M0 150 C 60 140, 140 145, 210 150" />
+      <rect x="15" y="70" width="18" height="80"/>
+      <rect x="38" y="95" width="14" height="55"/>
+      <rect x="56" y="55" width="10" height="95"/>
+      <rect x="70" y="100" width="20" height="50"/>
+      <rect x="95" y="30" width="16" height="120"/>
+      <path d="M95 30 L103 10 L111 30" />
+      <rect x="115" y="85" width="12" height="65"/>
+      <rect x="131" y="60" width="16" height="90"/>
+      <rect x="151" y="105" width="22" height="45"/>
+      <rect x="177" y="75" width="12" height="75"/>
+      <line x1="0" y1="150" x2="800" y2="150"/>
+      <path d="M650 150 q10 -55 14 -70 q4 15 6 70" />
+      <path d="M664 82 q-22 -8 -32 4 q16 4 32 -4" />
+      <path d="M664 82 q22 -10 34 0 q-18 6 -34 0" />
+      <path d="M664 82 q-4 -20 4 -34 q8 14 2 34" />
+      <path d="M730 150 q9 -48 13 -62 q4 14 5 62" />
+      <path d="M743 90 q-20 -7 -29 3 q14 4 29 -3" />
+      <path d="M743 90 q20 -9 30 0 q-16 5 -30 0" />
+      <path d="M580 150 q7 -36 10 -46 q3 10 4 46" />
+      <path d="M590 106 q-16 -6 -23 2 q11 3 23 -2" />
+      <path d="M590 106 q16 -7 24 0 q-13 4 -24 0" />
+    </g>
+  </svg>
+
+  <div class="countdown" id="countdown">
+    <div><span class="num" id="cd-days">–</span><span class="lbl">Days</span></div>
+    <div><span class="num" id="cd-hours">–</span><span class="lbl">Hours</span></div>
+    <div><span class="num" id="cd-mins">–</span><span class="lbl">Minutes</span></div>
+  </div>
+</section>
+</div>
+</div>
+
+<div class="divider"><div class="line"></div><span class="mark">✦</span><div class="line"></div></div>
+
+<!-- DETAILS -->
+<section class="details">
+  <div class="section-inner">
+    <p class="eyebrow">The Celebration</p>
+    <h2 class="section-title">When &amp; Where</h2>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <span class="k">Ceremony</span>
+        <span class="v">6:00 in the evening</span>
+        <div class="sub">Monday, 14th December 2026</div>
+      </div>
+      <div class="detail-card">
+        <span class="k">Venue</span>
+        <span class="v">Shangri‑La Colombo</span>
+        <div class="sub">1 Galle Face Centre Road, Colombo</div>
+      </div>
+      <div class="detail-card">
+        <span class="k">Attire</span>
+        <span class="v">Formal / Evening wear</span>
+        <div class="sub">Shades of emerald &amp; gold welcomed</div>
+      </div>
+      <div class="detail-card">
+        <span class="k">Kindly reply by</span>
+        <span class="v">30th September 2026</span>
+        <div class="sub">So we may prepare for your arrival</div>
+      </div>
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Shangri-La+Colombo" target="_blank" rel="noopener">View on map ↗</a>
+  </div>
+</section>
+
+<div class="divider"><div class="line"></div><span class="mark">✦</span><div class="line"></div></div>
+
+<!-- RSVP -->
+<section class="rsvp" id="rsvp">
+  <div class="section-inner">
+    <p class="eyebrow">Kindly Respond</p>
+    <h2 class="section-title">R.S.V.P.</h2>
+    <p class="rsvp-note">Please reply by <b>30th September 2026</b> — we can hardly wait to celebrate with you.</p>
+
+    <form id="rsvpForm">
+      <div class="field">
+        <label for="fullName">Full name(s)</label>
+        <input type="text" id="fullName" name="fullName" placeholder="As you'd like it on our guest list" required>
+      </div>
+
+      <div class="field">
+        <label>Will you be attending?</label>
+        <div class="attend-toggle">
+          <input type="radio" id="attendYes" name="attending" value="Joyfully accepts" required>
+          <label for="attendYes">Joyfully Accepts</label>
+          <input type="radio" id="attendNo" name="attending" value="Regretfully declines" required>
+          <label for="attendNo">Regretfully Declines</label>
+        </div>
+      </div>
+
+      <div class="field guest-row" id="guestRow">
+        <label for="guestCount">Number attending (including you)</label>
+        <select id="guestCount" name="guestCount">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
+      <div class="field guest-row" id="mealRow">
+        <label for="meal">Meal preference</label>
+        <select id="meal" name="meal">
+          <option value="No preference">No preference</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+          <option value="Non-vegetarian">Non‑vegetarian</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">A note for the couple (optional)</label>
+        <textarea id="message" name="message" placeholder="Well wishes, song requests, dietary notes…"></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="seal-btn" id="submitBtn">Send RSVP</button>
+        <p class="error-msg" id="errorMsg">Something went wrong saving your reply — please try again.</p>
+      </div>
+    </form>
+
+    <div class="confirm" id="confirmBlock">
+      <div class="seal"><span class="seal-initials">T · K</span></div>
+      <h3 id="confirmTitle">Thank you</h3>
+      <p id="confirmText">Your reply has been recorded. We can't wait to celebrate with you.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="eyebrow" style="opacity:0.7">14 · 12 · 2026 — Colombo</p>
+  <p style="margin-top:0.6rem; font-family:'Petit Formal Script', cursive; font-size:1.6rem; color:var(--gold);">With love, Thewuni &amp; Kasun</p>
+  <button class="admin-toggle" id="adminToggle">Couple's guest list view</button>
+  <div class="admin-panel" id="adminPanel">
+    <p style="font-size:0.75rem; color:#9b917f;">Visible to anyone who opens this — share only with the couple if privacy matters.</p>
+    <div class="admin-summary" id="adminSummary"></div>
+    <button class="admin-refresh" id="adminRefresh">Refresh</button>
+    <table id="adminTable">
+      <thead><tr><th>Name</th><th>Reply</th><th>Guests</th><th>Meal</th><th>Note</th></tr></thead>
+      <tbody id="adminBody"></tbody>
+    </table>
+  </div>
+</footer>
+
+<script>
+  // ---------- Countdown ----------
+  const weddingDate = new Date("2026-12-14T18:00:00+05:30").getTime();
+  function tickCountdown(){
+    const now = Date.now();
+    const diff = weddingDate - now;
+    if(diff <= 0){
+      document.getElementById('cd-days').textContent = "0";
+      document.getElementById('cd-hours').textContent = "0";
+      document.getElementById('cd-mins').textContent = "0";
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours;
+    document.getElementById('cd-mins').textContent = mins;
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 60000);
+
+  // ---------- RSVP toggle fields ----------
+  const attendYes = document.getElementById('attendYes');
+  const attendNo = document.getElementById('attendNo');
+  const guestRow = document.getElementById('guestRow');
+  const mealRow = document.getElementById('mealRow');
+  function syncRows(){
+    const attending = attendYes.checked;
+    guestRow.classList.toggle('show', attending);
+    mealRow.classList.toggle('show', attending);
+  }
+  attendYes.addEventListener('change', syncRows);
+  attendNo.addEventListener('change', syncRows);
+
+  // ---------- Submit RSVP ----------
+  const form = document.getElementById('rsvpForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const confirmBlock = document.getElementById('confirmBlock');
+  const confirmTitle = document.getElementById('confirmTitle');
+  const confirmText = document.getElementById('confirmText');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.classList.remove('show');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const data = new FormData(form);
+    const attendingVal = data.get('attending');
+    const isYes = attendingVal === "Joyfully accepts";
+    const entry = {
+      name: (data.get('fullName') || '').trim(),
+      attending: attendingVal,
+      guestCount: isYes ? (data.get('guestCount') || '1') : '0',
+      meal: isYes ? (data.get('meal') || 'No preference') : '—',
+      message: (data.get('message') || '').trim(),
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      const key = 'rsvp:' + Date.now() + '-' + Math.random().toString(36).slice(2,8);
+      const result = await window.storage.set(key, JSON.stringify(entry), true);
+      if(!result){ throw new Error('Save failed'); }
+
+      form.classList.add('hide');
+      confirmBlock.classList.add('show');
+      if(isYes){
+        confirmTitle.textContent = 'Thank you, ' + (entry.name.split(' ')[0] || 'friend') + '!';
+        confirmText.textContent = "Your reply has been recorded — we can't wait to celebrate with you on the 14th of December.";
+      } else {
+        confirmTitle.textContent = 'We\'ll miss you';
+        confirmText.textContent = "Thank you for letting us know. Your reply has been recorded, and you'll be in our thoughts.";
+      }
+    } catch(err){
+      errorMsg.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send RSVP';
+    }
+  });
+
+  // ---------- Admin / guest list panel ----------
+  const adminToggle = document.getElementById('adminToggle');
+  const adminPanel = document.getElementById('adminPanel');
+  const adminBody = document.getElementById('adminBody');
+  const adminSummary = document.getElementById('adminSummary');
+  const adminRefresh = document.getElementById('adminRefresh');
+
+  async function loadResponses(){
+    adminBody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
+    try {
+      const list = await window.storage.list('rsvp:', true);
+      if(!list || !list.keys || list.keys.length === 0){
+        adminBody.innerHTML = '<tr><td colspan="5">No replies yet.</td></tr>';
+        adminSummary.innerHTML = '';
+        return;
+      }
+      const entries = [];
+      for(const k of list.keys){
+        try{
+          const r = await window.storage.get(k, true);
+          if(r && r.value) entries.push(JSON.parse(r.value));
+        } catch(_e) { /* skip unreadable entry */ }
+      }
+      entries.sort((a,b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+
+      let attendingGuests = 0, yesCount = 0, noCount = 0;
+      adminBody.innerHTML = entries.map(en => {
+        if(en.attending === 'Joyfully accepts'){ yesCount++; attendingGuests += parseInt(en.guestCount || '1', 10); }
+        else { noCount++; }
+        const name = escapeHtml(en.name || '—');
+        const reply = en.attending === 'Joyfully accepts' ? 'Accepted' : 'Declined';
+        const note = escapeHtml(en.message || '—');
+        return `<tr><td>${name}</td><td>${reply}</td><td>${escapeHtml(en.guestCount || '—')}</td><td>${escapeHtml(en.meal || '—')}</td><td>${note}</td></tr>`;
+      }).join('');
+
+      adminSummary.innerHTML = `
+        <div>${yesCount}<span>Accepted</span></div>
+        <div>${noCount}<span>Declined</span></div>
+        <div>${attendingGuests}<span>Total guests coming</span></div>
+      `;
+    } catch(err){
+      adminBody.innerHTML = '<tr><td colspan="5">Could not load replies right now.</td></tr>';
+    }
+  }
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+  }
+
+  adminToggle.addEventListener('click', () => {
+    const showing = adminPanel.classList.toggle('show');
+    if(showing) loadResponses();
+  });
+  adminRefresh.addEventListener('click', loadResponses);
+</script>
+
+</body>
+</html>
